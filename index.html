@@ -1,24 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Brand Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Linkosiclothing - Glamorous Fashion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dr+Sugiyama&family=Rubik+Dirt&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dr+Sugiyama&family=Rubik+Dirt&family=Sedgwick+Ave&display=swap" rel="stylesheet">
+    <style>
+
+.dr-sugiyama-regular {
+  font-family: "Dr Sugiyama", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sedgwick-ave-regular {
+  font-family: "Sedgwick Ave", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.rubik-dirt-regular {
+  font-family: "Rubik Dirt", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #c1a57b;
+            --font-family: 'Arial, sans-serif';
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+
+        /* Popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 500px;
+    animation: popup-animation 0.4s ease-in-out;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes popup-animation {
+    from {transform: scale(0.7); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+/* Form styles */
+
+
+.playfair-display-about {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Adjust weight as needed */
+    font-style: normal;
+    text-align: center; /* Center align text */
+}
+
+.playfair-display-contact {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Adjust weight as needed */
+    font-style: normal;
+    text-align: center; /* Center align text */
+}
+
+/* Apply to specific elements */
+#about-popup h2, #about-popup p {
+    font-family: "Playfair Display", serif;
+    text-align: center;
+}
+
+#contact-popup h2, #contact-popup input, #contact-popup textarea, #contact-popup button {
+    font-family: "Playfair Display", serif;
+    text-align: center;
+}
+
+/* Adjust form fields to center within the form */
+#contact-form input, #contact-form textarea {
+    width: calc(100% - 20px); /* Ensures it does not overflow */
+    margin: 0 auto; /* Centers input and textarea horizontally */
+}
+
+
+
+
+
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+#contact-form button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #555;
+}
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            transition: background-color var(--transition-speed) ease-in-out;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+        }
+
+        .nav {
+            display: flex;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 4px;
+            transition: all var(--transition-speed);
+        }
+
+        .hero-section {
+            height: 100vh;
+            background: url('home.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--secondary-color);
+            overflow: hidden;
+        }
+
+        .hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInDown var(--transition-speed) ease-in-out;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInDown 1s forwards;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            animation: fadeInUp var(--transition-speed) ease-in-out;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .shop-section,
+        .collections-section {
+            padding: 50px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .shop-section h2,
+        .collections-section h2 {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .product-gallery,
+        .collection-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.2s forwards;
+        }
+
+        .product-item,
+        .collection-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-item img,
+        .collection-item img {
+            width: 100%;
+            height: auto;
+            transition: transform var(--transition-speed) ease-in-out;
+        }
+
+        .product-item h3,
+        .collection-item h3 {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--secondary-color);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            transition: opacity var(--transition-speed) ease-in-out;
+            opacity: 0;
+        }
+
+        .product-item:hover img,
+        .collection-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .product-item:hover h3,
+        .collection-item:hover h3 {
+            opacity: 1;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: var(--primary-color);
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav.active .nav-links {
+                display: flex;
+            }
+
+            .nav.active .hamburger .line:nth-child(1) {
+                transform: rotate(45deg) translateY(6px);
+            }
+
+            .nav.active .hamburger .line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav.active .hamburger .line:nth-child(3) {
+                transform: rotate(-45deg) translateY(-6px);
+            }
+        }
+
+        /* Scroll Animations */
+        .shop-section h2,
+        .collections-section h2,
+        .product-gallery,
+        .collection-gallery {
+            animation: fadeInUp 1.2s forwards;
+        }
+
+        .product-item,
+        .collection-item {
+            animation: fadeInUp 1.5s forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .shop-section h2,
+            .collections-section h2,
+            .product-gallery,
+            .collection-gallery,
+            .product-item,
+            .collection-item {
+                animation: none;
+            }
+        }
+
+
+    </style>
 </head>
+
 <body>
 
     <!-- Header -->
     <header class="header">
         <div class="logo">
-            <h1>LuxuryBrand</h1>
+            <h1 class="sedgwick-ave-regular">Linkosiclothing</h1>
         </div>
         <nav class="nav">
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#shop">Shop</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li id="about-link"><a href="#about">About</a></li>
+                <li id="contact-link"><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="hamburger">
@@ -27,37 +433,135 @@
             <div class="line"></div>
         </div>
     </header>
+    
+   <!-- About Us Popup -->
+<div id="about-popup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2 class="playfair-display-about">ABOUT US</h2>
+        <p class="playfair-display-about">
+            Founded in the vibrant city of Nairobi, Kenya, in 2019, Linkosiclothing has swiftly risen to become one of the leading glamorous brands in the fashion industry. The designs are a captivating blend of modern trends and timeless elegance, catering to the discerning individual who seeks to make a statement. Linkosiclothing's commitment to quality is evident in every piece, meticulously crafted with premium fabrics and impeccable attention to detail. From stunning dresses to chic separates, their collection empowers women to embrace their inner confidence and radiate style. Linkosiclothing's dedication to empowering women extends beyond fashion, as they actively support local artisans and promote sustainable practices. With a global reach and a loyal following, Linkosiclothing continues to redefine elegance and inspire women around the world.
+        </p>
+    </div>
+</div>
 
+<!-- Contact Us Popup -->
+<div id="contact-popup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2 class="playfair-display-contact">Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" name="name" class="playfair-display-contact" placeholder="Name" required>
+            <input type="email" name="email" class="playfair-display-contact" placeholder="Email" required>
+            <input type="tel" name="phone" class="playfair-display-contact" placeholder="Phone" required>
+            <textarea name="message" class="playfair-display-contact" placeholder="Message" required></textarea>
+            <button type="submit" class="playfair-display-contact">Send</button>
+        </form>
+    </div>
+</div>
+
+    </div>
+    
     <!-- Main Content -->
     <main>
+        <!-- Hero Section -->
         <section id="home" class="hero-section">
             <div class="hero-content">
-                <h2>Welcome to LuxuryBrand</h2>
-                <p>Your destination for exclusive fashion.</p>
+                <h2 class=" sedgwick-ave-regular">Linkosiclothing</h2>
+                <p>Let Your Style Shine.</p>
             </div>
         </section>
 
+        <!-- Shop Section -->
         <section id="shop" class="shop-section">
             <h2>Our Collection</h2>
-            <!-- Add product images here -->
+            <div class="product-gallery">
+                <div class="product-item">
+                    <img src="IMG_20231023_154004.JPG" alt="Product 1">
+                   
+                </div>
+                <div class="product-item">
+                    <img src="IMG_20240220_174003_598.jpg" alt="Product 2">
+                   
+                </div>
+                <div class="product-item">
+                    <img src="IMG_20240716_190652_781.jpg" alt="Product 3">
+                 
+                </div>
+                <div class="product-item">
+                    <img src="Picsart_23-03-13_20-13-49-317.jpg" alt="Product 4">
+                   
+                </div>
+                <!-- Add more products as needed -->
+            </div>
         </section>
 
-        <section id="about" class="about-section">
-            <h2>About Us</h2>
-            <p>Discover the story behind our brand.</p>
+        <!-- Collections Section -->
+        <section id="collections" class="collections-section">
+            <h2>Featured Collections</h2>
+            <div class="collection-gallery">
+                <div class="collection-item">
+                    <img src="IMG_20240220_174003_598.jpg" alt="Collection 1">
+                  
+                </div>
+                <div class="collection-item">
+                    <img src="IMG_20231023_154004.JPG" alt="Collection 2">
+                   
+                </div>
+                <div class="collection-item">
+                    <img src="Picsart_23-03-07_12-58-13-239.jpg" alt="Collection 3">
+                 
+                </div>
+                <div class="collection-item">
+                    <img src="IMG_20240716_190652_781.jpg" alt="Collection 4">
+               
+                </div>
+                <!-- Add more collections as needed -->
+            </div>
         </section>
 
-        <section id="contact" class="contact-section">
-            <h2>Contact Us</h2>
-            <p>Get in touch for inquiries and more.</p>
-        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 LuxuryBrand. All rights reserved.</p>
+    <footer>
+        <p>&copy; 2024 Linkosiclothing. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Script for Hamburger Menu -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.nav');
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Function to show the About Us popup
+document.getElementById("about-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("about-popup").style.display = "flex";
+});
+
+// Function to show the Contact Us popup
+document.getElementById("contact-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("contact-popup").style.display = "flex";
+});
+
+// Function to close popups
+document.querySelectorAll(".close").forEach(function(closeBtn) {
+    closeBtn.addEventListener("click", function() {
+        this.parentElement.parentElement.style.display = "none";
+    });
+});
+
+// Click outside to close popup
+window.addEventListener("click", function(event) {
+    if (event.target.classList.contains("popup")) {
+        event.target.style.display = "none";
+    }
+});
+
+    </script>
 </body>
+
 </html>
